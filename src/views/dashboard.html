@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><%= htmlWebpackPlugin.options.title %> | Story App</title>
+  </head>
+  <body>
+    <header>
+      <nav-bar></nav-bar>
+    </header>
+
+    <main>
+      <div id="carousel-container"></div>
+      <div class="container-fluid m-0 mt-4">
+        <div class="row mb-2">
+          <div class="col-8 ps-5">
+            <h5 class="border-bottom pb-2">Featured Post</h5>
+          </div>
+          <div class="col-4"></div>
+        </div>
+        <div class="row">
+          <div id="main-section" class="col-8 ps-5"></div>
+          <div id="side-section" class="col-4 position-relative">
+            <div id="user-profile"></div>
+            <h5
+              class="border-bottom pb-2 position-relative start-50 translate-middle-x mt-4"
+              style="width: 18rem"
+            >
+              Close Friends
+            </h5>
+            <div id="close-friends">
+              <close-friend-card
+                name="Natasha"
+                imgPath="/image/profile-picture-2.jpg"
+              ></close-friend-card>
+              <close-friend-card
+                name="Phoebe"
+                imgPath="/image/profile-picture-3.jpg"
+              ></close-friend-card>
+              <close-friend-card
+                name="Brent Faiyaz"
+                imgPath="/image/profile-picture-4.jpg"
+              ></close-friend-card>
+            </div>
+            <h5
+              class="border-bottom pb-2 position-relative start-50 translate-middle-x mt-4"
+              style="width: 18rem"
+            >
+              Your Story
+            </h5>
+            <div
+              id="carouselExampleFade"
+              class="carousel slide carousel-fade position-relative start-50 translate-middle-x"
+              style="width: 18rem"
+            >
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img
+                    src="https://picsum.photos/1200/700?random=14"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="https://picsum.photos/1200/700?random=15"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="https://picsum.photos/1200/700?random=16"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                </div>
+              </div>
+              <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#carouselExampleFade"
+                data-bs-slide="prev"
+              >
+                <span
+                  class="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#carouselExampleFade"
+                data-bs-slide="next"
+              >
+                <span
+                  class="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="main-footer bg-dark">
+        <div class="container px-3 py-4">
+          <footer-app></footer-app>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

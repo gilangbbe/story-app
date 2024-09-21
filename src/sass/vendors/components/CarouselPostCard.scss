@@ -1,0 +1,57 @@
+@mixin base-size-post-card {
+  height: 80px;
+  width: 80px;
+}
+
+@mixin hover-box-shadow {
+  box-shadow: 3px 0px 22px 0px rgba(255, 255, 255, 0.75);
+  -webkit-box-shadow: 3px 0px 22px 0px rgba(255, 255, 255, 0.75);
+  -moz-box-shadow: 3px 0px 22px 0px rgba(255, 255, 255, 0.75);
+}
+
+carousel-post-card {
+  .container-post-card {
+    cursor: pointer;
+    pointer-events: auto;
+    border-radius: 10px;
+    position: relative;
+    height: 80px;
+    width: 300px;
+    display: flex;
+    gap: 20px;
+
+    .image-post-card {
+      @include base-size-post-card;
+      position: relative;
+
+      img {
+        @include base-size-post-card;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 10px;
+      }
+    }
+
+    .desc-post-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      color: white;
+
+      p {
+        margin: 0;
+        font-size: 0.8rem;
+        font-weight: lighter;
+      }
+
+      .name {
+        font-size: 1.3rem;
+        font-weight: bolder;
+      }
+    }
+
+    &:hover {
+      @include hover-box-shadow();
+    }
+  }
+}

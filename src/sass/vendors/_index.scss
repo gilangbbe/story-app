@@ -1,0 +1,6 @@
+@forward 'bootstrap';
+@forward 'bootstrap-icons';
+@use 'components/CarouselPost';
+@use 'components/CarouselPostCard';
+@use 'components/UserProfileCard.scss';
+@use 'components/CardContent.scss';
