@@ -8,6 +8,7 @@ class CarouselPostCard extends LitWithoutShadowDom {
     name: { type: String, reflect: true },
     createdAt: { type: String, reflect: true },
     storyId: { type: String, reflect: true },
+    description: { type: String, reflect: true },
   };
 
   constructor() {
@@ -17,6 +18,7 @@ class CarouselPostCard extends LitWithoutShadowDom {
     this.name = '';
     this.createdAt = '';
     this.storyId = '';
+    this.description = '';
   }
 
   render() {
@@ -39,18 +41,13 @@ class CarouselPostCard extends LitWithoutShadowDom {
   }
 
   async _changePost(event) {
-    const postCard = event.currentTarget;
-    const storyId = postCard.id;
-    const data = await fetch('data/DATA.json');
-    const responseJson = await data.json();
-    const listStories = responseJson.listStory;
-    const story = listStories.find((e) => e.id === storyId);
     const carouselPost = document.querySelector('carousel-post');
-    carouselPost.setAttribute('imgPath', `${story.photoUrl}`);
-    carouselPost.setAttribute('name', `${story.name}`);
-    carouselPost.setAttribute('storyId', `${story.id}`);
-    carouselPost.setAttribute('description', `${story.description}`);
-    carouselPost.setAttribute('createdAt', `${story.createdAt}`);
+    carouselPost.setAttribute('imgPath', `${this.imgPath}`);
+    carouselPost.setAttribute('name', `${this.name}`);
+    carouselPost.setAttribute('storyId', `${this.storyId}`);
+    carouselPost.setAttribute('description', `${this.description}`);
+    carouselPost.setAttribute('createdAt', `${this.createdAt}`);
+    carouselPost.setAttribute('createdAt', `${this.createdAt}`);
   }
 }
 

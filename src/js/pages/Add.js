@@ -1,11 +1,17 @@
+import CheckUserAuth from './auth/check-user-auth';
+import Stories from '../network/stories';
+import Config from '../config/config-endpoint';
+import Utils from '../utils/utils';
+
 const Add = {
   async init() {
+    CheckUserAuth.checkLoginState();
     this._initialListener();
   },
 
   _initialListener() {
-    const evidenceInput = document.querySelector('#validationCustomImage');
-    evidenceInput.addEventListener('change', () => {
+    const imageInput = document.querySelector('#validationCustomImage');
+    imageInput.addEventListener('change', () => {
       this._updatePhotoPreview();
     });
 
@@ -23,22 +29,36 @@ const Add = {
     );
   },
 
-  _sendPost() {
+  async _sendPost() {
     const formData = this._getFormData();
 
     if (this._validateFormData({ ...formData })) {
+      const button = document.querySelector('button');
       console.log('formData');
       console.log(formData);
-      this._goToDashboardPage();
+      const userToken = Utils.getUserToken(Config.USER_TOKEN_KEY);
+      const config = {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${userToken}`,
+        },
+      };
+      try {
+        const response = await Stories.addStory(formData, config);
+        button.innerHTML = 'Submit';
+        this._goToDashboardPage();
+      } catch (error) {
+        console.log(error);
+      }
     }
   },
 
   _getFormData() {
-    const evidenceInput = document.querySelector('#validationCustomImage');
+    const imageInput = document.querySelector('#validationCustomImage');
     const descriptionInput = document.querySelector('#validationDescription');
 
     return {
-      evidence: evidenceInput.files[0],
+      photo: imageInput.files[0],
       description: descriptionInput.value,
     };
   },

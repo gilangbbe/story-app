@@ -23,9 +23,13 @@ class CardContent extends LitWithoutShadowDom {
   render() {
     this.createdAtShorten = format(new Date(this.createdAt), 'd MMMM yyyy');
     return html`
-      <div id="${this.storyId}" class="card mb-4 border-0">
-        <div class="row g-0">
-          <div class="col-md-4">
+      <div
+        id="${this.storyId}"
+        class="card mb-4 border-0"
+        style="height: 200px"
+      >
+        <div class="row g-0 h-100">
+          <div class="col-md-4 h-100">
             <img src="${this.imgPath}" class="image-content rounded" />
           </div>
           <div class="col-md-8">

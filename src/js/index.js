@@ -2,12 +2,16 @@
 import '../sass/main.scss';
 import './components/index';
 import Dashboard from './pages/Dashboard';
-import Add from './pages/add';
+import Add from './pages/Add';
+import Login from './pages/Login';
+import Register from './pages/Register';
 import * as bootstrap from 'bootstrap';
 
 const routes = {
   '/': Dashboard,
   '/add.html': Add,
+  '/login.html': Login,
+  '/register.html': Register,
 };
 
 const detectRoute = () => routes[window.location.pathname];

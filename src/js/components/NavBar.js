@@ -11,7 +11,7 @@ class NavBar extends LitWithoutShadowDom {
       <nav class="navbar bg-body-white">
         <div class="d-flex justify-content-center container-fluid">
           <div style="box-sizing: border-box;">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
               <img
                 src="/icon/favicon.png"
                 alt="Logo"

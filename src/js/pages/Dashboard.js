@@ -1,15 +1,27 @@
+import CheckUserAuth from './auth/check-user-auth';
+import Stories from '../network/stories';
+import Utils from '../utils/utils';
+import Config from '../config/config-endpoint';
+
 const Dashboard = {
   async init() {
+    CheckUserAuth.checkLoginState();
     await this._renderInitial();
     this._renderSideSection();
   },
 
   async _renderInitial() {
-    const fetchStories = await fetch('/data/DATA.json');
-    const response = await fetchStories.json();
-    this._listStories = response.listStory;
-    this._renderCarouselPost(this._listStories.slice(0, 3));
-    this._renderMainContent(this._listStories);
+    const userToken = Utils.getUserToken(Config.USER_TOKEN_KEY);
+    try {
+      const response = await Stories.getAllStories({
+        headers: { Authorization: `Bearer ${userToken}` },
+      });
+      this._listStories = response.data.listStory;
+      this._renderCarouselPost(this._listStories.slice(0, 3));
+      this._renderMainContent(this._listStories);
+    } catch (error) {
+      console.log(error);
+    }
   },
 
   _renderCarouselPost(stories) {
@@ -36,6 +48,7 @@ const Dashboard = {
           name="${story.name}";
           createdAt="${story.createdAt}";
           storyId="${story.id}";
+          description="${story.description}"
         ></carousel-post-card>
       `;
     }

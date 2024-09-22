@@ -1,9 +1,17 @@
 import { html } from 'lit';
 import LitWithoutShadowDom from './base/LitWithoutShadowDom';
+import Utils from '../utils/utils';
+import Config from '../config/config-endpoint';
+import CheckUserAuth from '../pages/auth/check-user-auth';
 
 class UserProfileCard extends LitWithoutShadowDom {
+  static properties = {
+    username: { type: String, reflect: true },
+  };
   constructor() {
     super();
+
+    this.username = Utils.getUserToken(Config.USER_USERNAME);
   }
 
   render() {
@@ -25,14 +33,28 @@ class UserProfileCard extends LitWithoutShadowDom {
               <span class="visually-hidden">unread messages</span>
             </span>
           </div>
-          <h5 class="card-title">Hello, Biru</h5>
+          <h5 class="card-title">Hello, ${this.username}</h5>
           <p class="card-text">Software Engineer</p>
-          <a type="button" class="btn btn-dark w-100" href="/add.html">
+          <a type="button" class="btn btn-dark w-100 mb-2" href="/add.html">
             Add Stories
           </a>
+          <button
+            type="button"
+            class="btn btn-dark w-100"
+            @click=${this._userLogOut}
+          >
+            Logout
+          </button>
         </div>
       </div>
     `;
+  }
+
+  _userLogOut(event) {
+    event.preventDefault();
+    Utils.destroyUserToken(Config.USER_TOKEN_KEY);
+    Utils.destroyUserToken(Config.USER_USERNAME);
+    CheckUserAuth.checkLoginState();
   }
 }
 

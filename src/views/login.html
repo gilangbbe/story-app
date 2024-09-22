@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title><%= htmlWebpackPlugin.options.title %> | Story App</title>
+  </head>
+  <body>
+    <header>
+      <nav-bar></nav-bar>
+    </header>
+
+    <main>
+      <div
+        class="container-sm position-absolute top-50 start-50 translate-middle shadow-lg"
+        style="max-width: 70%"
+      >
+        <div class="row">
+          <div class="col p-5">
+            <div
+              id="alertError"
+              class="alert alert-dark d-none"
+              role="alert"
+            ></div>
+            <h4 class="mb-3">Sign In</h4>
+            <form id="loginForm" novalidate>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="name@example.com"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input
+                  type="password"
+                  id="password"
+                  class="form-control"
+                  aria-describedby="passwordHelpBlock"
+                  required
+                />
+                <div id="passwordHelpBlock" class="form-text">
+                  Your password must be 8-20 characters long, contain letters
+                  and numbers, and must not contain spaces, special characters,
+                  or emoji.
+                </div>
+              </div>
+              <button class="btn btn-dark w-100 rounded-pill" type="submit">
+                Sign In
+              </button>
+            </form>
+          </div>
+          <div class="col register-col bg-dark text-white bg-gradient">
+            <div
+              class="text-center position-relative top-50 start-50 translate-middle"
+            >
+              <h5 class="fw-bolder">Welcome to StoryApp</h5>
+              <p class="fw-lighter">Don't have an account?</p>
+              <a
+                type="button"
+                href="/register.html"
+                class="btn btn-outline-light rounded-pill"
+              >
+                Sign Up
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="main-footer bg-dark">
+        <div class="container px-3 py-4">
+          <footer-app></footer-app>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
