@@ -23,6 +23,10 @@ const Add = {
         event.stopPropagation();
 
         addFormRecord.classList.add('was-validated');
+        const alert = document.querySelector('#alertError');
+        if (alert.classList.contains('d-block')) {
+          alert.classList.replace('d-block', 'd-none');
+        }
         this._sendPost();
       },
       false
@@ -49,6 +53,10 @@ const Add = {
         this._goToDashboardPage();
       } catch (error) {
         console.log(error);
+        button.innerHTML = 'Submit';
+        const alert = document.querySelector('#alertError');
+        alert.textContent = error.response.data.message;
+        alert.classList.replace('d-none', 'd-block');
       }
     }
   },
